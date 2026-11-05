@@ -1,0 +1,39 @@
+U15 Basketball Scout APK 作成手順
+
+【重要】このZIPにはAndroidプロジェクトとGitHub Actions設定が入っています。
+
+1. ZIPをスマホにダウンロードして展開します。
+2. GitHubでAPK作成に使うリポジトリを開きます。
+3. 既存ファイルを残したまま部分修正せず、このZIP内の次の構成をリポジトリの同じ場所へアップロードしてください。
+
+.github/workflows/build-apk.yml
+U15_Basketball_Scout_Android/ （フォルダ内を含む全ファイル）
+
+4. GitHub上で次の構成になっているか確認します。
+   リポジトリ/
+   ├─ .github/workflows/build-apk.yml
+   └─ U15_Basketball_Scout_Android/
+      ├─ settings.gradle
+      ├─ build.gradle
+      ├─ gradle.properties
+      └─ app/...
+
+5. mainブランチへCommitします。
+6. GitHubのActionsタブを開きます。
+7. 「Build U15 Basketball Scout APK」を選び、「Run workflow」を押します。
+8. 実行が緑のチェックで完了したら、実行結果ページ下部のArtifactsから
+   「U15-Basketball-Scout-APK」をダウンロードします。
+9. ZIPを展開し、app-debug.apkをAndroidにインストールします。
+
+【今回の設定】
+- Java 17
+- Android Gradle Plugin 8.7.3
+- Gradle 8.9
+- Android SDK Platform 35
+- Build Tools 35.0.0
+- Debug APKをArtifactとして保存
+
+【注意】
+- これはAPKをビルドするためのプロジェクト一式です。GitHub Actionsで実際に成功するかは、リポジトリへ配置して実行するまで確定できません。
+- カメラ利用時はAndroidの権限確認が表示されます。
+- APKを他のスマホへ配布する場合も、各端末でインストール許可が必要です。
